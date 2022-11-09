@@ -62,3 +62,18 @@ function mf.map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+---Set buffer vim keymap
+---@param bufnr number
+---@param mode string
+---@param lhs string
+---@param rhs string
+---@param opts table
+function mf.bmap(bufnr, mode, lhs, rhs, opts)
+    local options = { noremap = true }
+
+    if opts then
+        options = vim.tbl_extend('force', options, opts)
+    end
+
+    vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, options)
+end

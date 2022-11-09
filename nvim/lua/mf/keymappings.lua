@@ -11,28 +11,40 @@ mf.map('n', '<Space>', '<cmd>noh<CR>', silenced)
 mf.map('n', '<C-t>', ':NERDTreeToggle<CR>', silenced)
 
 -- line navigation
-mf.map('n', 'ö', '^')
-mf.map('n', 'ä', '$')
-mf.map('n', 'dä', 'd$')
-mf.map('n', 'dö', 'd^')
-mf.map('n', 'yä', 'y$')
-mf.map('n', 'yö', 'y^')
-mf.map('v', 'ö', '^')
-mf.map('v', 'ä', '$')
+mf.map('n', 'ö', '^', silenced)
+mf.map('n', 'ä', '$', silenced)
+mf.map('n', 'dä', 'd$', silenced)
+mf.map('n', 'dö', 'd^', silenced)
+mf.map('n', 'yä', 'y$', silenced)
+mf.map('n', 'yö', 'y^', silenced)
+mf.map('v', 'ö', '^', silenced)
+mf.map('v', 'ä', '$', silenced)
+
+-- file navigation
+mf.map('n', '<C-p>', '<C-i>', silenced)
+
+-- pane navigation
+mf.map('n', '<Right>', '<C-w>l', silenced)
+mf.map('n', '<Left>', '<C-w>h', silenced)
+mf.map('n', '<Up>', '<C-w>k', silenced)
+mf.map('n', '<Down>', '<C-w>j', silenced)
 
 -- tab navigation
-mf.map('n', '<Tab>', 'gt')
-mf.map('n', '<S-Tab>', 'gT')
+mf.map('n', '<Tab>', 'gt', silenced)
+mf.map('n', '<S-Tab>', 'gT', silenced)
 
--- bash
-mf.map('n', '<F1>','<C-w>s<C-w>j:terminal<CR>i')
-mf.map('t', '<F1>','<C-\\><C-n>:q!<CR>')
-mf.map('n', '<F2>','<C-w>ji')
-mf.map('t', '<F2>','<C-\\><C-n><C-w>k')
+-- terminal
+mf.map('n', '<F1>','<C-w>s<C-w>j:terminal<CR><C-w>9-i', silenced)
+mf.map('t', '<F1>','<C-\\><C-n>:q!<CR>', silenced)
+mf.map('n', '<F2>','<C-w>ji', silenced)
+mf.map('t', '<F2>','<C-\\><C-n><C-w>k', silenced)
+mf.map('n', '<F3>','<C-w>v<C-w>l:terminal<CR>i', silenced)
+mf.map('t', '<F3>','<C-\\><C-n><C-w>v<C-w>l:terminal<CR>i', silenced)
+mf.map('t', '<C-o>','<C-\\><C-n>', silenced) -- get out of terminal wo closing
 
 -- telescope
-mf.map('n', '<C-f><C-f>', ':Telescope find_files<CR>')
-mf.map('n', '<C-f><C-g>', ':Telescope live_grep<CR>')
+mf.map('n', '<C-f><C-f>', ':Telescope find_files<CR>', silenced)
+mf.map('n', '<C-f><C-g>', ':Telescope live_grep<CR>', silenced)
 
 -- lsp
 -- this function is passed to lsp's on_attach hook, so mappings are only loaded if lsp is

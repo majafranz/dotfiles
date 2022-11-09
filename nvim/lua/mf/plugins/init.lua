@@ -55,13 +55,8 @@ return require('packer').startup(function(use)
         config = conf('cmp')
     }
 
-    -- completion for python, as long as jedi-lsp is kinda shitty
-    use {
-        'Shougo/deoplete.nvim',
-        run = ':UpdateRemotePlugins',
-        config = conf('deoplete'),
-    }
-    use { 'zchee/deoplete-jedi' }
+    -- syntax highlightig
+    use 'lepture/vim-jinja' -- jinja
 
     -- fuzzy finder
     use {
