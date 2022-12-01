@@ -75,5 +75,9 @@ return require('packer').startup(function(use)
         },
         branch = '0.1.x'
     }
+    use {
+        'windwp/nvim-autopairs',
+        config = conf('autopairs')
+    }
 end)
 
