@@ -16,13 +16,21 @@ return require('packer').startup(function(use)
 
     use {
         'ellisonleao/gruvbox.nvim' ,
-        config = conf('gruvbox')
+        config = conf('gruvbox'),
+        tag = '1.0.0'
     }
 
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         config = conf('treesitter')
+    }
+
+    -- auto annotations
+    use {
+        'danymat/neogen',
+        config = conf('neogen'),
+        requires = 'nvim-treesitter/nvim-treesitter',
     }
 
     use {

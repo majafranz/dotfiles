@@ -46,6 +46,9 @@ mf.map('t', '<C-o>','<C-\\><C-n>', silenced) -- get out of terminal wo closing
 mf.map('n', '<C-f><C-f>', ':Telescope find_files<CR>', silenced)
 mf.map('n', '<C-f><C-g>', ':Telescope live_grep<CR>', silenced)
 
+-- neogen
+mf.map('n', '<Space>n', ":lua require('neogen').generate()<CR>", silenced)
+
 -- lsp
 -- this function is passed to lsp's on_attach hook, so mappings are only loaded if lsp is
 function M.lsp_mappings(bufnr)
