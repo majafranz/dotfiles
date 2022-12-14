@@ -1,28 +1,29 @@
 local cmd = vim.cmd
+local globals = require("mf.globals")
 
 cmd('syntax enable')
 cmd('filetype plugin indent on')
 
-mf.augroup('UserSettings', {
+globals.augroup('UserSettings', {
         -- highlight yank for 250ms
         {
-            events = { 'TextYankPost' },
-            targets = { '*' },
+            event = { 'TextYankPost' },
+            pattern = { '*' },
             command = function()
                 vim.highlight.on_yank({ on_visual = false, timeout = 250 })
             end,
         },
        -- toggle hiding invisible chars on insert
         {
-            events = { 'InsertEnter' },
-            targets = { '*' },
+            event = { 'InsertEnter' },
+            pattern = { '*' },
             command = function()
                 vim.wo.list = false
             end,
         },
         {
-            events = { 'InsertLeave' },
-            targets = { '*' },
+            event = { 'InsertLeave' },
+            pattern = { '*' },
             command = function()
                 vim.wo.list = true
             end,

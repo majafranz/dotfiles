@@ -1,4 +1,6 @@
-local M = { }
+local M = {}
+
+local mf = require("mf.globals")
 
 local silenced = { silent = true }
 

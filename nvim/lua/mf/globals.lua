@@ -8,6 +8,8 @@ _G.mf = {
     _store = __mf_global_callbacks,
 }
 
+local mf = {}
+
 ---Add callback to global store
 ---@param f function
 function mf._create(f)
@@ -23,28 +25,29 @@ function mf._execute(id, args)
 end
 
 ---Create an autocommand
+---returns the group ID so that it can be cleared or manipulated.
 ---@param name string
 ---@param commands Autocommand[]
+---@return number
 function mf.augroup(name, commands)
-    vim.cmd('augroup ' .. name)
-    vim.cmd('autocmd!')
-    for _, c in ipairs(commands) do
-        local command = c.command
-        if type(command) == 'function' then
-            local fn_id = mf._create(command)
-            command = fmt('lua mf._execute(%s)', fn_id)
-        end
-        vim.cmd(
-            string.format(
-                'autocmd %s %s %s %s',
-                table.concat(c.events, ','),
-                table.concat(c.targets or { }, ','),
-                table.concat(c.modifiers or { }, ' '),
-                command
-            )
-        )
+    local id = vim.api.nvim_create_augroup(name, { clear = true })
+
+    for _, autocmd in ipairs(commands) do
+        local is_callback = type(autocmd.command) == 'function'
+
+        vim.api.nvim_create_autocmd(autocmd.event, {
+            group = name,
+            pattern = autocmd.pattern,
+            desc = autocmd.description,
+            callback = is_callback and autocmd.command or nil,
+            command = not is_callback and autocmd.command or nil,
+            once = autocmd.once,
+            nested = autocmd.nested,
+            buffer = autocmd.buffer,
+        })
     end
-    vim.cmd('augroup END')
+
+    return id
 end
 
 ---Set global vim keymap
@@ -77,3 +80,5 @@ function mf.bmap(bufnr, mode, lhs, rhs, opts)
 
     vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, options)
 end
+
+return mf
