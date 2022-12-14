@@ -52,13 +52,14 @@ mf.map('n', '<Space>n', ":lua require('neogen').generate()<CR>", silenced)
 -- lsp
 -- this function is passed to lsp's on_attach hook, so mappings are only loaded if lsp is
 function M.lsp_mappings(bufnr)
-    local function buf_set_keymap(...) mf.bmap(bufnr, ...) end
 
+    local function buf_set_keymap(...) mf.bmap(bufnr, ...) end
     -- most common lsp functions
     buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', silenced)
     buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', silenced)
     buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', silenced)
     buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', silenced)
+    buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', silenced)
     buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', silenced)
     buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', silenced)
     buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', silenced)
