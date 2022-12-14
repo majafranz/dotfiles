@@ -2,10 +2,10 @@ local cmp = require('cmp')
 
 cmp.setup {
   sources = {
-      { name = 'nvim_lua' },
-      { name = 'nvim_lsp' },
-      { name = 'buffer', keyword_length = 4 },
-      { name = 'path' },
+      { name = 'path', priority_weight = 110 },
+      { name = 'nvim_lsp', max_item_count = 20, priority_weight = 100 },
+      { name = 'nvim_lua', priority_weight = 90 },
+      { name = 'buffer', priority_weight = 70, keyword_length = 4 },
   },
 
   mapping = cmp.mapping.preset.insert({
