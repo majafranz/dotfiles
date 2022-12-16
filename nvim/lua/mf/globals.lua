@@ -10,20 +10,6 @@ _G.mf = {
 
 local mf = {}
 
----Add callback to global store
----@param f function
-function mf._create(f)
-    table.insert(mf._store, f)
-    return #mf._store
-end
-
----Execute callback with id
----@param id number
----@param args any
-function mf._execute(id, args)
-    mf._store[id](args)
-end
-
 ---Create an autocommand
 ---returns the group ID so that it can be cleared or manipulated.
 ---@param name string
