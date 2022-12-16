@@ -30,12 +30,9 @@ return require('packer').startup(function(use)
     use 'scrooloose/nerdtree'
 
     -- LSP support
-    use {
-        'williamboman/nvim-lsp-installer',
-        requires = {
-          {'neovim/nvim-lspconfig'},
-        },
-    }
+    use "neovim/nvim-lspconfig"
+    use "williamboman/mason.nvim"
+    use "williamboman/mason-lspconfig.nvim"
 
     -- completion
     use {

@@ -1,5 +1,6 @@
-require("nvim-lsp-installer").setup({
-    automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+require("mason").setup()
+require("mason-lspconfig").setup({
+    automatic_installation = true
 })
 
 -- Use an on_attach function to only map the following keys
@@ -13,9 +14,9 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
+local servers = { 'clangd', 'texlab', 'sumneko_lua', 'jedi_language_server', 'r_language_server'}
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'texlab', 'sumneko_lua', 'jedi_language_server', 'r_language_server'}
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
         on_attach = on_attach,
