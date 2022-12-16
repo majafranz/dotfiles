@@ -62,5 +62,9 @@ return require('packer').startup(function(use)
     }
 
     use 'windwp/nvim-autopairs'
+
+    if packer_bootstrap then
+        require('packer').sync()
+    end
 end)
 
