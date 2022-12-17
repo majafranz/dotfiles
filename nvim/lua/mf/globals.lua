@@ -1,13 +1,5 @@
 local fmt = string.format
 
----Global namespace
----store all callbacks in one global table so they are able to survive re-requiring this file
-_G.__mf_global_callbacks = __mf_global_callbacks or { }
-
-_G.mf = {
-    _store = __mf_global_callbacks,
-}
-
 local mf = {}
 
 ---Create an autocommand
