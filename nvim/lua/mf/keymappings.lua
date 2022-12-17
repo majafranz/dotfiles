@@ -4,10 +4,10 @@ local globals = require("mf.globals")
 
 local silenced = { silent = true }
 
-vim.g.mapleader = ','
+vim.g.mapleader = ' '
 
 -- clear highlight on space
-globals.map('n', '<Space>', '<cmd>noh<CR>', silenced)
+globals.map('n', '<space>', '<cmd>noh<CR>', silenced)
 
 -- nerdtree
 globals.map('n', '<C-t>', ':NERDTreeToggle<CR>', silenced)
@@ -49,7 +49,7 @@ globals.map('n', '<C-f><C-f>', ':Telescope find_files<CR>', silenced)
 globals.map('n', '<C-f><C-g>', ':Telescope live_grep<CR>', silenced)
 
 -- neogen
-globals.map('n', '<Space>n', ":lua require('neogen').generate()<CR>", silenced)
+globals.map('n', '<leader>n', ":lua require('neogen').generate()<CR>", silenced)
 
 -- lsp
 -- this function is passed to lsp's on_attach hook, so mappings are only loaded if lsp is
@@ -61,14 +61,14 @@ function M.lsp_mappings(bufnr)
     buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', silenced)
     buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', silenced)
     buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', silenced)
-    buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', silenced)
+    buf_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', silenced)
     buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', silenced)
     buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', silenced)
     buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', silenced)
     buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', silenced)
-    buf_set_keymap('n', '<Space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', silenced)
-    buf_set_keymap('n', '<Space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', silenced)
-    buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', silenced)
+    buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', silenced)
+    buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', silenced)
+    buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', silenced)
 end
 
 return M
