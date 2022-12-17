@@ -14,7 +14,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
-local servers = { 'clangd', 'texlab', 'sumneko_lua', 'jedi_language_server', 'r_language_server'}
+local servers = { 'clangd', 'texlab', 'jedi_language_server', 'r_language_server'}
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 for _, lsp in ipairs(servers) do
@@ -23,3 +23,18 @@ for _, lsp in ipairs(servers) do
         capabilities = capabilities,
     }
 end
+
+-- Extra settings for Lua
+require'lspconfig'.sumneko_lua.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+    },
+  },
+}
+
