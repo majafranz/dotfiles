@@ -27,7 +27,7 @@ return require('packer').startup(function(use)
     }
 
     use 'lewis6991/gitsigns.nvim'
-    use 'scrooloose/nerdtree'
+    use 'preservim/nerdtree'
 
     -- LSP support
     use "neovim/nvim-lspconfig"
@@ -42,6 +42,7 @@ return require('packer').startup(function(use)
           {'hrsh7th/cmp-path'},
           {'hrsh7th/cmp-nvim-lsp'},
           {'hrsh7th/cmp-nvim-lua'},
+          {'L3MON4D3/LuaSnip'}
         },
     }
 
