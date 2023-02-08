@@ -36,8 +36,6 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.smartindent = true
-vim.o.ts = 4
-vim.o.sw = 4
 
 vim.o.termguicolors = true
 vim.o.shiftround = true
