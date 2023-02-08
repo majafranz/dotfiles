@@ -28,6 +28,14 @@ globals.augroup('UserSettings', {
                 vim.wo.list = true
             end,
         },
+        {
+            event = { 'BufNewFile', 'BufRead'},
+            pattern = { '*.tex' },
+            command = function()
+                vim.o.shiftwidth = 2
+                vim.o.tabstop = 2
+            end,
+        },
 })
 
 vim.o.title = true
