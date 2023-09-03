@@ -6,5 +6,4 @@ return require('gitsigns').setup({
         topdelete = { hl = 'GitSignsDelete', text = '▌' },
         changedelete = { hl = 'GitSignsChange', text = '▌' },
     },
-    keymaps = { },
 })

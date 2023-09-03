@@ -1,6 +1,9 @@
+local servers = { 'clangd', 'texlab', 'jedi_language_server', 'r_language_server', 'lua_ls'}
+local servers_wo_lua = { 'clangd', 'texlab', 'jedi_language_server', 'r_language_server'}
+
 require("mason").setup()
 require("mason-lspconfig").setup({
-    automatic_installation = true
+    ensure_installed = servers
 })
 
 -- Use an on_attach function to only map the following keys
@@ -14,10 +17,9 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
-local servers = { 'clangd', 'texlab', 'jedi_language_server', 'r_language_server'}
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-for _, lsp in ipairs(servers) do
+for _, lsp in ipairs(servers_wo_lua) do
     lspconfig[lsp].setup {
         on_attach = on_attach,
         capabilities = capabilities,
@@ -25,7 +27,7 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Extra settings for Lua
-require'lspconfig'.sumneko_lua.setup {
+require'lspconfig'.lua_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
