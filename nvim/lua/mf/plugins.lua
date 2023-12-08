@@ -61,6 +61,16 @@ return require('packer').startup(function(use)
 
     use 'windwp/nvim-autopairs'
 
+    -- obsidian
+    use {
+        "epwalsh/obsidian.nvim",
+        tag = "*",  -- recommended, use latest release instead of latest commit
+        requires = {
+            -- Required.
+            "nvim-lua/plenary.nvim",
+        }
+    }
+
     if packer_bootstrap then
         require('packer').sync()
     end

@@ -51,6 +51,12 @@ globals.map('n', '<C-f><C-g>', ':Telescope live_grep<CR>', silenced)
 -- neogen
 globals.map('n', '<leader>n', ":lua require('neogen').generate()<CR>", silenced)
 
+-- obsidian
+globals.map('n', '<leader>oo', ":ObsidianOpen<CR>", silenced)
+globals.map('n', '<leader>ot', ":ObsidianToday<CR>", silenced)
+globals.map('n', '<leader>oy', ":ObsidianYesterday<CR>", silenced)
+globals.map('n', '<leader>om', ":ObsidianTomorrow<CR>", silenced)
+
 -- lsp
 -- this function is passed to lsp's on_attach hook, so mappings are only loaded if lsp is
 function M.lsp_mappings(bufnr)
