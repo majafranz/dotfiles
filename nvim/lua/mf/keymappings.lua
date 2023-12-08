@@ -44,10 +44,6 @@ globals.map('n', '<F3>','<C-w>v<C-w>l:terminal<CR>i', silenced)
 globals.map('t', '<F3>','<C-\\><C-n><C-w>v<C-w>l:terminal<CR>i', silenced)
 globals.map('t', '<C-o>','<C-\\><C-n>', silenced) -- get out of terminal wo closing
 
--- telescope
-globals.map('n', '<C-f><C-f>', ':Telescope find_files<CR>', silenced)
-globals.map('n', '<C-f><C-g>', ':Telescope live_grep<CR>', silenced)
-
 -- neogen
 globals.map('n', '<leader>n', ":lua require('neogen').generate()<CR>", silenced)
 
@@ -56,6 +52,7 @@ globals.map('n', '<leader>oo', ":ObsidianOpen<CR>", silenced)
 globals.map('n', '<leader>ot', ":ObsidianToday<CR>", silenced)
 globals.map('n', '<leader>oy', ":ObsidianYesterday<CR>", silenced)
 globals.map('n', '<leader>om', ":ObsidianTomorrow<CR>", silenced)
+globals.map('n', '<leader>os', ":ObsidianQuickSwitch<CR>", silenced)
 
 -- lsp
 -- this function is passed to lsp's on_attach hook, so mappings are only loaded if lsp is
@@ -77,4 +74,11 @@ function M.lsp_mappings(bufnr)
     buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', silenced)
 end
 
+function M.telescope_mappings()
+    -- telescope
+    globals.map('n', '<C-f><C-f>', ':Telescope find_files<CR>', silenced)
+    globals.map('n', '<C-f><C-g>', ':Telescope live_grep<CR>', silenced)
+end
+
 return M
+
