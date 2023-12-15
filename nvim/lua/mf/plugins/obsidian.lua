@@ -26,7 +26,7 @@ local function config()
             -- Optional, if you want to change the date format of the default alias of daily notes.
             alias_format = "%B %-d, %Y",
             -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-            template = nil
+            template = "daily.md"
         },
 
         -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
@@ -91,8 +91,6 @@ local function config()
             end
             return prefix .. "_" .. tostring(os.time())
         end,
-
-        disable_frontmatter = true,
 
         -- Optional, for templates (see below).
         templates = {
