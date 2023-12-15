@@ -1,13 +1,30 @@
 local fmt = string.format
 
-local mf = {}
+local M = {}
+
+---Merge table t1, t2
+---Source: https://stackoverflow.com/questions/1283388/lua-merge-tables
+---@param t1 table
+---@param t2 table
+---@return table
+function M.merge(t1, t2)
+    for k, v in pairs(t2) do
+        if (type(v) == 'table') and (type(t1[k] or false) == 'table') then
+            M.merge(t1[k], t2[k])
+        else
+            t1[k] = v
+        end
+    end
+
+    return t1
+end
 
 ---Create an autocommand
 ---returns the group ID so that it can be cleared or manipulated.
 ---@param name string
 ---@param commands Autocommand[]
 ---@return number
-function mf.augroup(name, commands)
+function M.augroup(name, commands)
     local id = vim.api.nvim_create_augroup(name, { clear = true })
 
     for _, autocmd in ipairs(commands) do
@@ -33,30 +50,16 @@ end
 ---@param lhs string
 ---@param rhs string
 ---@param opts table
-function mf.map(mode, lhs, rhs, opts)
+function M.map(mode, lhs, rhs, opts)
     local options = { noremap = true }
 
     if opts then
-        options = vim.tbl_extend('force', options, opts)
+        options = M.merge(options, opts)
     end
 
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    vim.keymap.set(mode, lhs, rhs, options)
 end
 
----Set buffer vim keymap
----@param bufnr number
----@param mode string
----@param lhs string
----@param rhs string
----@param opts table
-function mf.bmap(bufnr, mode, lhs, rhs, opts)
-    local options = { noremap = true }
 
-    if opts then
-        options = vim.tbl_extend('force', options, opts)
-    end
 
-    vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, options)
-end
-
-return mf
+return M
