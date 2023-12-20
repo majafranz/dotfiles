@@ -36,7 +36,7 @@ globals.map('n', '<Tab>', 'gt', silenced)
 globals.map('n', '<S-Tab>', 'gT', silenced)
 
 -- terminal
-globals.map('n', '<F1>','<C-w>s<C-w>j:terminal<CR><C-w>9-i', silenced)
+globals.map('n', '<F1>','<C-w>s<C-w>j:terminal<CR><C-w>20-i', silenced)
 globals.map('t', '<F1>','<C-\\><C-n>:q!<CR>', silenced)
 globals.map('n', '<F2>','<C-w>ji', silenced)
 globals.map('t', '<F2>','<C-\\><C-n><C-w>k', silenced)
@@ -53,6 +53,15 @@ globals.map('n', '<leader>ot', ":ObsidianToday<CR>", silenced)
 globals.map('n', '<leader>oy', ":ObsidianYesterday<CR>", silenced)
 globals.map('n', '<leader>om', ":ObsidianTomorrow<CR>", silenced)
 globals.map('n', '<leader>os', ":ObsidianQuickSwitch<CR>", silenced)
+
+-- gitsigns
+globals.map('n', '<leader>gn', ':Gitsigns next_hunk<CR>', silenced)
+globals.map('n', '<leader>gp', ':Gitsigns prev_hunk<CR>', silenced)
+globals.map('n', '<leader>gs', ':Gitsigns preview_hunk<CR>', silenced)
+globals.map('n', '<leader>gr', ':Gitsigns reset_hunk<CR>', silenced)
+globals.map('n', '<leader>gd', ':Gitsigns diffthis<CR>', silenced)
+globals.map('n', '<leader>ga', ':Gitsigns stage_hunk<CR>', silenced)
+globals.map('n', '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', silenced)
 
 -- lsp
 -- this function is passed to lsp's on_attach hook, so mappings are only loaded if lsp is

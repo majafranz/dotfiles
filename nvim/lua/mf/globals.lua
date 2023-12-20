@@ -19,6 +19,15 @@ function M.merge(t1, t2)
     return t1
 end
 
+---@class Autocommand
+---@field description string
+---@field event  string[] list of autocommand events
+---@field pattern string[] list of autocommand patterns
+---@field command string | function
+---@field nested  boolean
+---@field once    boolean
+---@field buffer  number
+
 ---Create an autocommand
 ---returns the group ID so that it can be cleared or manipulated.
 ---@param name string
