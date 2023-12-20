@@ -20,13 +20,9 @@ function M.merge(t1, t2)
 end
 
 ---@class Autocommand
----@field description string
 ---@field event  string[] list of autocommand events
 ---@field pattern string[] list of autocommand patterns
 ---@field command string | function
----@field nested  boolean
----@field once    boolean
----@field buffer  number
 
 ---Create an autocommand
 ---returns the group ID so that it can be cleared or manipulated.
@@ -42,12 +38,8 @@ function M.augroup(name, commands)
         vim.api.nvim_create_autocmd(autocmd.event, {
             group = name,
             pattern = autocmd.pattern,
-            desc = autocmd.description,
             callback = is_callback and autocmd.command or nil,
             command = not is_callback and autocmd.command or nil,
-            once = autocmd.once,
-            nested = autocmd.nested,
-            buffer = autocmd.buffer,
         })
     end
 

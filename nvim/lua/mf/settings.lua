@@ -36,6 +36,17 @@ globals.augroup('UserSettings', {
                 vim.o.tabstop = 2
             end,
         },
+
+        -- set tab width dynamically on c-like files
+        {
+            event = { 'FileType' },
+            pattern = { 'c', 'cpp', 'sh', 'make' },
+            command = function()
+                vim.o.shiftwidth = 2
+                vim.o.tabstop = 2
+                vim.o.expandtab = false
+            end,
+        },
 })
 
 vim.o.title = true
