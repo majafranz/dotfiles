@@ -63,6 +63,15 @@ globals.map('n', '<leader>gd', ':Gitsigns diffthis<CR>', silenced)
 globals.map('n', '<leader>ga', ':Gitsigns stage_hunk<CR>', silenced)
 globals.map('n', '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', silenced)
 
+-- doge
+globals.map('n', '<leader>d', '<Plug>(doge-generate)', silenced)
+globals.map('n', '<TAB>', '<Plug>(doge-comment-jump-forward)', silenced)
+globals.map('n', '<S-TAB>', '<Plug>(doge-comment-jump-backward)', silenced)
+globals.map('i', '<TAB>', '<Plug>(doge-comment-jump-forward)', silenced)
+globals.map('i', '<S-TAB>', '<Plug>(doge-comment-jump-backward)', silenced)
+globals.map('x', '<TAB>', '<Plug>(doge-comment-jump-forward)', silenced)
+globals.map('x', '<S-TAB>', '<Plug>(doge-comment-jump-backward)', silenced)
+
 -- lsp
 -- this function is passed to lsp's on_attach hook, so mappings are only loaded if lsp is
 function M.lsp_mappings(opts)
