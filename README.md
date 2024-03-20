@@ -1,6 +1,8 @@
-# My Neovim Config
+# My Linux Dotfiles
 
-Some parts are shamelessly stolen from mintelm/dotfiles :)
+## Neovim Config
+
+Some parts are shamelessly stolen from [mintelm/dotfiles](https://github.com/mintelm/dotfiles) :)
 
 ## Setup
 

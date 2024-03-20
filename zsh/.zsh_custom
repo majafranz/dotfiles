@@ -1,0 +1,24 @@
+alias vim=nvim
+alias open="xdg-open"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# pdf alias
+function pdf() {
+    for FILE in $@; do
+        if [[ $FILE == *"." ]] then
+            FILE="${FILE}pdf"
+        elif [[ ! $FILE == *".pdf" ]] then
+            FILE="${FILE}.pdf"
+        fi
+        okular $FILE > /tmp/pdf_out 2>&1 &
+    done
+}
+
+# venvs
+alias acv="source .venv/bin/activate"
+alias mkv="python -m venv .venv"
+
