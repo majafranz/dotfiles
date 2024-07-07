@@ -89,7 +89,7 @@ function M.lsp_mappings(opts)
     globals.map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
     globals.map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
     globals.map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    globals.map('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    globals.map('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 end
 
 function M.telescope_mappings()
