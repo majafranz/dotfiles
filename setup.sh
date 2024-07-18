@@ -34,6 +34,8 @@ ln -sv$f $SCRIPT_DIR/nvim/* ~/.config/nvim
 # i3 stuff
 echo Linking i3 stuff...
 ln -sv$f $SCRIPT_DIR/i3/config ~/.i3/config
+mkdir -p ~/.config/i3status-rust
+ln -sv$f $SCRIPT_DIR/i3/statusbar.toml ~/.config/i3status-rust/config.toml
 
 # tmux stuff
 echo Linking tmux stuff...
