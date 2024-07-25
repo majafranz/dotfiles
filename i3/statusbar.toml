@@ -38,7 +38,7 @@ block = "net"
 format = " $icon  {$signal_strength $ssid|Wired connection} "
 [[block.click]]
 button = "left"
-cmd = "nm-connection-editor"
+cmd = "konsole -e nmtui"
 
 [[block]]
 block = "sound"
