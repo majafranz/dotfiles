@@ -1,9 +1,5 @@
 local function config()
     local to_be_intalled = {
-        "stylua",
-        "mypy",
-        "ruff",
-        "black",
     }
 
     require("mason-null-ls").setup({
