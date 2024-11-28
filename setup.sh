@@ -31,17 +31,7 @@ ln -sv$f $SCRIPT_DIR/zsh/* ~/.zsh
 echo Linking nvim stuff...
 ln -sv$f $SCRIPT_DIR/nvim/* ~/.config/nvim
 
-# i3 stuff
-echo Linking i3 stuff...
-ln -sv$f $SCRIPT_DIR/i3/config ~/.i3/config
-mkdir -p ~/.config/i3status-rust
-ln -sv$f $SCRIPT_DIR/i3/statusbar.toml ~/.config/i3status-rust/config.toml
-
 # tmux stuff
 echo Linking tmux stuff...
 ln -sv$f $SCRIPT_DIR/tmux/config ~/.tmux.conf
 
-# dunst stuff
-echo Linking dunst notification stuff
-mkdir -p ~/.config/dunst
-ln -sv$f $SCRIPT_DIR/dunst/dunstrc ~/.config/dunst/dunstrc

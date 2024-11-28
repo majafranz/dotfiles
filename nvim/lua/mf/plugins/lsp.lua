@@ -1,6 +1,6 @@
 local style = require('mf.style')
 
-local lsp_list = { 'clangd', 'texlab', 'pyright', 'r_language_server', 'lua_ls'}
+local lsp_list = {}
 
 local float_opts = {
     border = style.current.border,
