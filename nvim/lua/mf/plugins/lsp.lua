@@ -192,20 +192,6 @@ local function lsp_config()
                 capabilities = lsp_capabilities,
             })
         end,
-        ['lua_ls'] = function()
-            lspconfig['lua_ls'].setup({
-                on_attach = lsp_attach,
-                capabilities = lsp_capabilities,
-                settings = {
-                    Lua = {
-                      diagnostics = {
-                        -- Get the language server to recognize the `vim` global
-                        globals = {'vim'},
-                      },
-                    },
-                },
-            })
-        end,
     })
 end
 
