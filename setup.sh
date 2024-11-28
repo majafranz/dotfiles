@@ -40,3 +40,8 @@ ln -sv$f $SCRIPT_DIR/i3/statusbar.toml ~/.config/i3status-rust/config.toml
 # tmux stuff
 echo Linking tmux stuff...
 ln -sv$f $SCRIPT_DIR/tmux/config ~/.tmux.conf
+
+# dunst stuff
+echo Linking dunst notification stuff
+mkdir -p ~/.config/dunst
+ln -sv$f $SCRIPT_DIR/dunst/dunstrc ~/.config/dunst/dunstrc
