@@ -219,3 +219,6 @@ exec_always --no-startup-id sleep 5; feh --bg-fill /home/maja/Pictures/Stardew_V
 # move focused workspace between monitors
 bindsym $mod+Ctrl+adiaeresis move workspace to output right
 bindsym $mod+Ctrl+odiaeresis move workspace to output left
+
+# dunst (notifications)
+exec --no-startup-id dunst
