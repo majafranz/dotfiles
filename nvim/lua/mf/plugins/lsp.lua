@@ -1,6 +1,6 @@
 local style = require('mf.style')
 
-local lsp_list = { 'clangd', 'texlab', 'pyright', 'r_language_server', 'lua_ls'}
+local lsp_list = {'texlab', 'pyright', 'lua_ls'}
 
 local float_opts = {
     border = style.current.border,
@@ -206,6 +206,18 @@ local function lsp_config()
                 },
             })
         end,
+        ['clangd'] = function()
+            lspconfig.clangd.setup({
+                on_attach = lsp_attach,
+                capabilities = lsp_capabilities,
+                cmd = {"clangd", "--compile-commands-dir=" .. vim.loop.cwd() },
+                filetypes = { "c", "cpp", "objc", "objcpp", "arduino" },
+                init_options = {
+                    usePlaceholders = true,
+                    completeUnimported = true,
+                },
+            })
+        end
     })
 end
 
