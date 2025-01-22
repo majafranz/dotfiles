@@ -19,6 +19,8 @@ globals.map('n', 'dä', 'd$', silenced)
 globals.map('n', 'dö', 'd^', silenced)
 globals.map('n', 'yä', 'y$', silenced)
 globals.map('n', 'yö', 'y^', silenced)
+globals.map('n', 'cä', 'c$', silenced)
+globals.map('n', 'cö', 'c^', silenced)
 globals.map('v', 'ö', '^', silenced)
 globals.map('v', 'ä', '$', silenced)
 
