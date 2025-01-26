@@ -48,6 +48,16 @@ globals.augroup('UserSettings', {
                 vim.o.expandtab = false
             end,
         },
+        -- set tab width dynamically on vue and ts files
+        {
+            event = { 'FileType' },
+            pattern = {"vue", "ts"},
+            command = function()
+                vim.o.shiftwidth = 4
+                vim.o.tabstop = 4
+                vim.o.expandtab = false
+            end,
+        },
 })
 
 vim.o.title = true
