@@ -9,11 +9,11 @@ return {
             border = require('mf.style').current.border,
         },
         signs = {
-            add = { hl = 'GitSignsAdd'   , text = '▌' },
-            change = { hl = 'GitSignsChange', text = '▌' },
-            delete = { hl = 'GitSignsDelete', text = '▌' },
-            topdelete = { hl = 'GitSignsDelete', text = '▌' },
-            changedelete = { hl = 'GitSignsChange', text = '▌' },
+            add = { text = '▌' },
+            change = { text = '▌' },
+            delete = { text = '▌' },
+            topdelete = { text = '▌' },
+            changedelete = { text = '▌' },
         },
     },
 }
