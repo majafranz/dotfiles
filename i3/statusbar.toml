@@ -38,7 +38,7 @@ block = "net"
 format = " $icon  {$signal_strength $ssid|Wired connection} "
 [[block.click]]
 button = "left"
-cmd = "konsole -e nmtui"
+cmd = "urxvt -e sh -c nmtui"
 
 [[block]]
 block = "sound"
