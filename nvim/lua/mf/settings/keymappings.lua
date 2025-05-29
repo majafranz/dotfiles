@@ -1,6 +1,6 @@
 local M = {}
 
-local globals = require("mf.globals")
+local globals = require("mf.settings.globals")
 
 local silenced = { silent = true }
 
@@ -75,24 +75,18 @@ globals.map('x', '<TAB>', '<Plug>(doge-comment-jump-forward)', silenced)
 globals.map('x', '<S-TAB>', '<Plug>(doge-comment-jump-backward)', silenced)
 
 -- lsp
--- this function is passed to lsp's on_attach hook, so mappings are only loaded if lsp is
-function M.lsp_mappings(opts)
-    opts = globals.merge(opts, silenced)
-
-    -- most common lsp functions
-    globals.map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    globals.map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    globals.map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    globals.map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    globals.map('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-    globals.map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-    globals.map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-    globals.map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    globals.map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    globals.map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    globals.map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-    globals.map('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
-end
+globals.map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+globals.map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+globals.map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+globals.map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+globals.map('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+globals.map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+globals.map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+globals.map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+globals.map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+globals.map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+globals.map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+globals.map('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 
 function M.telescope_mappings()
     -- telescope

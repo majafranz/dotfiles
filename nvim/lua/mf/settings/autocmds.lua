@@ -1,8 +1,4 @@
-local cmd = vim.cmd
-local globals = require("mf.globals")
-
-cmd('syntax enable')
-cmd('filetype plugin indent on')
+local globals = require("mf.settings.globals")
 
 globals.augroup('UserSettings', {
         -- highlight yank for 250ms
@@ -41,7 +37,7 @@ globals.augroup('UserSettings', {
         -- set tab width dynamically on c-like files
         {
             event = { 'FileType' },
-            pattern = { 'c', 'cpp', 'sh', 'make' },
+            pattern = { 'c', 'cpp', 'sh', 'make', "arduino"},
             command = function()
                 vim.o.shiftwidth = 2
                 vim.o.tabstop = 2
@@ -59,30 +55,3 @@ globals.augroup('UserSettings', {
             end,
         },
 })
-
-vim.o.title = true
-
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-vim.o.smartindent = true
-
-vim.o.termguicolors = true
-vim.o.shiftround = true
-vim.o.hidden = true
-
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
-vim.o.scrolloff = 4
-vim.o.mouse = 'a'
-vim.o.clipboard = 'unnamed,unnamedplus'
-vim.o.showmode = false
-
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.signcolumn = 'yes:1'
-vim.o.list = true
-vim.o.listchars = 'tab:→ ,trail:•,nbsp:␣,extends:»,precedes:«'
-
-vim.cmd('filetype plugin on')

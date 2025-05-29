@@ -1,5 +1,5 @@
 local style = require('mf.style')
-local keymappings = require('mf.keymappings')
+local keymappings = require('mf.settings.keymappings')
 
 local function config()
     local bc = style.current.border
