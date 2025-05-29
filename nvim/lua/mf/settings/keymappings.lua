@@ -86,7 +86,7 @@ globals.map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 globals.map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 globals.map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 globals.map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-globals.map('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
+globals.map('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({timeout_ms = 2000})<CR>', opts)
 
 function M.telescope_mappings()
     -- telescope
