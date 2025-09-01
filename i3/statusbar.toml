@@ -4,7 +4,7 @@ icons_format = "{icon}"
 theme = "gruvbox-dark"
 
 [icons]
-icons = "awesome4"
+icons = "material-nf"
 
 [[block]]
 block = "cpu"
@@ -50,7 +50,7 @@ cmd = "pavucontrol"
 [[block]]
 block = "custom"
 command = ""
-format = "  "
+format = "  "
 [[block.click]]
 button = "left"
 cmd = "systemsettings"
