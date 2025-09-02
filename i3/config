@@ -38,7 +38,7 @@ bindsym XF86AudioMicMute exec --no-startup-id " amixer set Capture toggle && $re
 bindsym XF86MonBrightnessUp exec "brightnessctl s +10%"
 bindsym XF86MonBrightnessDown exec "brightnessctl s 10%-"
 
-bindsym $mod2+l exec --no-startup-id i3exit lock, mode "default"
+bindsym $mod2+l exec --no-startup-id i3lock -i ~/.i3/background.png
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -221,7 +221,7 @@ no_focus [class="plasmashell" window_type="notification"]
 for_window [title="Desktop @ QRect.*"] kill; floating enable; border none
 
 exec_always --no-startup-id picom -bc
-exec_always --no-startup-id sleep 5; feh --bg-fill /home/maja/Pictures/Stardew_Valley_Expanded.webp
+exec_always --no-startup-id sleep 5; feh --bg-fill ~/.i3/background.png
 
 # move focused workspace between monitors
 bindsym $mod+Ctrl+adiaeresis move workspace to output right
@@ -229,4 +229,3 @@ bindsym $mod+Ctrl+odiaeresis move workspace to output left
 
 # dunst (notifications)
 exec --no-startup-id dunst
-exec --no-startup-id xautolock -time 10 -locker blurlock
