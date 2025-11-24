@@ -27,3 +27,5 @@ vim.o.relativenumber = true
 vim.o.signcolumn = 'yes:1'
 vim.o.list = true
 vim.o.listchars = 'tab:→ ,trail:•,nbsp:␣,extends:»,precedes:«'
+
+vim.opt.conceallevel = 1

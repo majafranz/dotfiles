@@ -50,11 +50,11 @@ globals.map('t', '<C-o>','<C-\\><C-n>', silenced) -- get out of terminal wo clos
 globals.map('n', '<leader>n', ":lua require('neogen').generate()<CR>", silenced)
 
 -- obsidian
-globals.map('n', '<leader>oo', ":ObsidianOpen<CR>", silenced)
-globals.map('n', '<leader>ot', ":ObsidianToday<CR>", silenced)
-globals.map('n', '<leader>oy', ":ObsidianYesterday<CR>", silenced)
-globals.map('n', '<leader>om', ":ObsidianTomorrow<CR>", silenced)
-globals.map('n', '<leader>os', ":ObsidianQuickSwitch<CR>", silenced)
+globals.map('n', '<leader>oo', ":Obsidian open<CR>", silenced)
+globals.map('n', '<leader>ot', ":Obsidian today<CR>", silenced)
+globals.map('n', '<leader>oy', ":Obsidian yesterday<CR>", silenced)
+globals.map('n', '<leader>om', ":Obsidian tomorrow<CR>", silenced)
+globals.map('n', '<leader>co', ":Obsidian toggle_checkbox<CR>", silenced)
 
 -- gitsigns
 globals.map('n', '<leader>gn', ':Gitsigns next_hunk<CR>', silenced)
