@@ -27,7 +27,7 @@ local function config()
             -- Optional, if you want to change the date format of the default alias of daily notes.
             alias_format = "%B %-d, %Y",
             -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-            template = "daily.md"
+            template = "daily.md",
         },
 
         -- -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
@@ -100,10 +100,9 @@ local function config()
         -- 3. "hsplit" - to open in a horizontal split if there's not already a horizontal split
         open_notes_in = "current",
 
-
         -- -- Optional, configure additional syntax highlighting / extmarks.
         ui = {
-            enable = true,         -- set to false to disable all additional syntax features
+            enable = true, -- set to false to disable all additional syntax features
             update_debounce = 200, -- update delay after a text change (in milliseconds)
             external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
             -- Replace the above with this if you don't have a patched font:
@@ -137,17 +136,26 @@ local function config()
             -- You can also add more custom ones...
         },
 
+        callbacks = {
+            enter_note = function(note)
+                vim.keymap.set("n", "<leader>ch", function()
+                    require("obsidian.api").toggle_checkbox({ " ", "x", "H" })
+                end, {
+                    buffer = note.bufnr,
+                    desc = "Quick Toggle",
+                })
+            end,
+        },
     })
 end
 
-
 return {
-    'obsidian-nvim/obsidian.nvim',
+    "obsidian-nvim/obsidian.nvim",
     config = config,
     dependencies = {
-        'nvim-treesitter/nvim-treesitter',
-        'nvim-lua/plenary.nvim',
-        'nvim-telescope/telescope.nvim',
-        'hrsh7th/nvim-cmp',
-    }
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+        "hrsh7th/nvim-cmp",
+    },
 }

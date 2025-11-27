@@ -54,7 +54,7 @@ globals.map('n', '<leader>oo', ":Obsidian open<CR>", silenced)
 globals.map('n', '<leader>ot', ":Obsidian today<CR>", silenced)
 globals.map('n', '<leader>oy', ":Obsidian yesterday<CR>", silenced)
 globals.map('n', '<leader>om', ":Obsidian tomorrow<CR>", silenced)
-globals.map('n', '<leader>co', ":Obsidian toggle_checkbox<CR>", silenced)
+globals.map('n', '<leader>oc', ":Obsidian toggle_checkbox<CR>", silenced)
 
 -- gitsigns
 globals.map('n', '<leader>gn', ':Gitsigns next_hunk<CR>', silenced)
