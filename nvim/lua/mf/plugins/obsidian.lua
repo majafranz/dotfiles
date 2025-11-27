@@ -139,7 +139,7 @@ local function config()
         callbacks = {
             enter_note = function(note)
                 vim.keymap.set("n", "<leader>ch", function()
-                    require("obsidian.api").toggle_checkbox({ " ", "x", "H" })
+                    require("obsidian.api").toggle_checkbox({ " ", "x" })
                 end, {
                     buffer = note.bufnr,
                     desc = "Quick Toggle",
