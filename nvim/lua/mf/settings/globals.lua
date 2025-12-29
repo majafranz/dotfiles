@@ -62,5 +62,21 @@ function M.map(mode, lhs, rhs, opts)
 end
 
 
+--- Set tabstop, shiftwdith and expandtab/smartindent accordingly
+--- @param tab_width number
+function M.set_tab_width(tab_width)
+    if tab_width >= 8 then
+        -- use real tabs
+        vim.bo.expandtab = false
+        vim.bo.smartindent = false
+    else
+        vim.bo.expandtab = true
+        vim.bo.smartindent = true
+    end
+    vim.bo.tabstop = tab_width
+    vim.bo.shiftwidth = tab_width
+    vim.bo.softtabstop = tab_width
+end
+
 
 return M
