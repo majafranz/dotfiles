@@ -26,7 +26,7 @@ globals.augroup('UserSettings', {
         },
         {
             event = { 'BufNewFile', 'BufRead'},
-            pattern = { '*.tex', "r"},
+            pattern = { '*.tex'},
             command = function()
                 vim.o.shiftwidth = 2
                 vim.o.tabstop = 2
@@ -52,6 +52,16 @@ globals.augroup('UserSettings', {
                 vim.o.shiftwidth = 4
                 vim.o.tabstop = 4
                 vim.o.expandtab = false
+            end,
+        },
+        -- set tab width dynamically on c-like files
+        {
+            event = { 'FileType' },
+            pattern = {"r"},
+            command = function()
+                vim.o.shiftwidth = 2
+                vim.o.tabstop = 2
+                vim.o.expandtab = true
             end,
         },
 })
