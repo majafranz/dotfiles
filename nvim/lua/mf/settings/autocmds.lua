@@ -26,7 +26,7 @@ globals.augroup('UserSettings', {
         },
         {
             event = { 'BufNewFile', 'BufRead'},
-            pattern = { '*.tex' },
+            pattern = { '*.tex', "r"},
             command = function()
                 vim.o.shiftwidth = 2
                 vim.o.tabstop = 2
