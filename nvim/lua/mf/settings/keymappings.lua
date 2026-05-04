@@ -67,12 +67,12 @@ globals.map('n', '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', silenced)
 
 -- doge
 globals.map('n', '<leader>d', '<Plug>(doge-generate)', silenced)
-globals.map('n', '<TAB>', '<Plug>(doge-comment-jump-forward)', silenced)
-globals.map('n', '<S-TAB>', '<Plug>(doge-comment-jump-backward)', silenced)
-globals.map('i', '<TAB>', '<Plug>(doge-comment-jump-forward)', silenced)
-globals.map('i', '<S-TAB>', '<Plug>(doge-comment-jump-backward)', silenced)
-globals.map('x', '<TAB>', '<Plug>(doge-comment-jump-forward)', silenced)
-globals.map('x', '<S-TAB>', '<Plug>(doge-comment-jump-backward)', silenced)
+globals.map('n', '<leader><TAB>', '<Plug>(doge-comment-jump-forward)', silenced)
+globals.map('n', '<leader><S-TAB>', '<Plug>(doge-comment-jump-backward)', silenced)
+globals.map('i', '<leader><TAB>', '<Plug>(doge-comment-jump-forward)', silenced)
+globals.map('i', '<leader><S-TAB>', '<Plug>(doge-comment-jump-backward)', silenced)
+globals.map('x', '<leader><TAB>', '<Plug>(doge-comment-jump-forward)', silenced)
+globals.map('x', '<leader><S-TAB>', '<Plug>(doge-comment-jump-backward)', silenced)
 
 -- lsp
 globals.map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', silenced)

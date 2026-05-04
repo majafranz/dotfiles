@@ -1,7 +1,7 @@
 local style = require('mf.style')
 
 local lsp_list = require('mf.settings.lsp')
-local lint_list = { "stylua", "mypy", "ruff", "black" }
+local lint_list = { "stylua", "ruff", "black" }
 
 return {
     'mason-org/mason-lspconfig.nvim',
