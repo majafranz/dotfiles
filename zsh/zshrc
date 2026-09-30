@@ -14,5 +14,8 @@ source ~/.zsh/manjaro-zsh-prompt
 # Custom options
 source ~/.zsh/zsh_custom
 
+# Desktop-only options (only linked by `setup.sh -g`)
+[[ ! -r ~/.zsh_gui ]] || source ~/.zsh_gui
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

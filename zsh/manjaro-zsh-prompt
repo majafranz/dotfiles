@@ -1,14 +1,22 @@
 # Powerlevel10k prompt; the p10k*.zsh configs come from Manjaro's manjaro-zsh-config package
+if zsh_plugin_path zsh-autosuggestions; then
+  source $REPLY
+fi
+
+if [[ ! -r /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]]; then
+  # No powerlevel10k (e.g. non-Manjaro server): plain prompt
+  PROMPT='%F{green}%n@%m%f:%F{blue}%~%f %# '
+  return
+fi
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 zmodload zsh/langinfo zsh/terminfo 2>/dev/null
 if [[ $langinfo[CODESET] != (utf|UTF)(-|)8 || $TERM == (dumb|linux) ]] || (( terminfo[colors] < 256 )); then
   # Terminal can't do powerline (e.g. the linux TTY): use 8 colors and ASCII
-  source /usr/share/zsh/p10k-portable.zsh
+  [[ ! -r /usr/share/zsh/p10k-portable.zsh ]] || source /usr/share/zsh/p10k-portable.zsh
   ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=black,bold'
 else
   # Use 256 colors and UNICODE
-  source /usr/share/zsh/p10k.zsh
+  [[ ! -r /usr/share/zsh/p10k.zsh ]] || source /usr/share/zsh/p10k.zsh
   ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 fi

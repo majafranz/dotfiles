@@ -1,0 +1,14 @@
+# Desktop-only additions, linked to ~/.zsh_gui by `setup.sh -g`
+alias open="xdg-open"
+
+# pdf alias
+function pdf() {
+    for FILE in "$@"; do
+        if [[ $FILE == *"." ]] then
+            FILE="${FILE}pdf"
+        elif [[ ! $FILE == *".pdf" ]] then
+            FILE="${FILE}.pdf"
+        fi
+        okular "$FILE" > /tmp/pdf_out 2>&1 &
+    done
+}

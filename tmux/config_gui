@@ -1,0 +1,2 @@
+# Desktop-only additions, linked to ~/.tmux.gui.conf by `setup.sh -g`
+bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel 'xclip -in -selection clipboard'

@@ -144,6 +144,8 @@ end
 
 return {
     "obsidian-nvim/obsidian.nvim",
+    -- only where the vault exists (i.e. not on servers)
+    cond = vim.fn.isdirectory(vim.fn.expand("~/work")) == 1,
     config = config,
     dependencies = {
         "nvim-treesitter/nvim-treesitter",

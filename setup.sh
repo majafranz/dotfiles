@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage() {
-	printf "Usage: $0 [-f] \n\nOptions:\n    -f: force link; also creates dirs\n";
+	printf "Usage: $0 [-g] [-f]\n\nOptions:\n    -g: full setup with GUI configs (i3, dunst, clipboard, ...); default is headless\n    -f: force link; also creates dirs\n";
 	exit 1;
 }
 
@@ -10,37 +10,64 @@ SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 # reset in case getopts has been used previously in shell
 OPTIND=1
-while getopts "f" opt; do
+gui=''
+while getopts "gf" opt; do
 	case "$opt" in
+		g)
+			gui=1
+			;;
 		f)
 			f='f'
-			echo Creating required directories...
-			mkdir -p ~/.config/nvim ~/.i3
 			;;
 		*)
 			usage
 	esac
 done
 
+if [ -n "$f" ]; then
+	echo Creating required directories...
+	mkdir -p ~/.config/nvim
+	[ -n "$gui" ] && mkdir -p ~/.i3
+fi
+
+if [ -n "$gui" ]; then
+	echo "Setting up full (GUI) configs..."
+else
+	echo "Setting up headless configs..."
+fi
+
+# Links a GUI-only file in full mode; removes a previously linked one in headless mode
+link_gui() {
+	if [ -n "$gui" ]; then
+		ln -sv$f "$1" "$2"
+	elif [ -L "$2" ]; then
+		rm -v "$2"
+	fi
+}
+
 # zsh stuff
 echo Linking zsh stuff...
 # -n: replace an existing ~/.zsh link instead of creating a link inside it
 ln -snv$f "$SCRIPT_DIR/zsh" ~/.zsh
 ln -sv$f "$SCRIPT_DIR/zsh/zshrc" ~/.zshrc
+link_gui "$SCRIPT_DIR/zsh/zsh_gui" ~/.zsh_gui
 
 # nvim stuff
 echo Linking nvim stuff...
 ln -sv$f "$SCRIPT_DIR"/nvim/* ~/.config/nvim
+
+# tmux stuff
+echo Linking tmux stuff...
+ln -sv$f "$SCRIPT_DIR"/tmux/config ~/.tmux.conf
+link_gui "$SCRIPT_DIR/tmux/config_gui" ~/.tmux.gui.conf
+
+[ -n "$gui" ] || exit 0
 
 # i3 stuff
 echo Linking i3 stuff...
 ln -sv$f "$SCRIPT_DIR"/i3/config ~/.i3/config
 mkdir -p ~/.config/i3status-rust
 ln -sv$f "$SCRIPT_DIR"/i3/statusbar.toml ~/.config/i3status-rust/config.toml
-
-# tmux stuff
-echo Linking tmux stuff...
-ln -sv$f "$SCRIPT_DIR"/tmux/config ~/.tmux.conf
 
 # dunst stuff
 echo Linking dunst notification stuff
