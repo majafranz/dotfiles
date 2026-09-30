@@ -7,10 +7,16 @@ Some parts are shamelessly stolen from [mintelm/dotfiles](https://github.com/min
 ## Setup
 
 ```sh
-./setup.sh      # symlink configs into place
-./setup.sh -f   # overwrite existing files and create missing dirs
+./setup.sh      # headless (servers): zsh, nvim, tmux
+./setup.sh -g   # full: additionally i3, i3status-rust, dunst and GUI extras
+                # (xdg-open/okular aliases, tmux copy to X clipboard)
+./setup.sh -f   # overwrite existing files and create missing dirs (combine with -g)
 ```
 
-The zsh config is a trimmed-down version of Manjaro's and expects these packages:
+The GUI extras live in `zsh/zsh_gui` and `tmux/config_gui`; the base configs source them only
+if `setup.sh -g` linked them. Rerunning headless removes those links again.
+
+The zsh config is a trimmed-down version of Manjaro's and uses these packages if installed
+(on other distros it falls back to a plain prompt):
 `manjaro-zsh-config` (provides the p10k prompt configs), `zsh-theme-powerlevel10k`,
 `zsh-autosuggestions`, `zsh-syntax-highlighting`, `zsh-history-substring-search`.

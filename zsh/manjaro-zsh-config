@@ -77,15 +77,27 @@ export LESS=-R
 
 
 ## Plugins section: Enable fish style features
+# Sets REPLY to the plugin file; paths differ between Arch and Debian, missing plugins are skipped
+function zsh_plugin_path {
+  local f
+  for f in /usr/share/zsh/plugins/$1/$1.zsh /usr/share/$1/$1.zsh; do
+    [[ -r $f ]] && { REPLY=$f; return 0 }
+  done
+  return 1
+}
 # Use syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if zsh_plugin_path zsh-syntax-highlighting; then
+  source $REPLY
+fi
 # Use history substring search
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-# bind UP and DOWN arrow keys to history substring search
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+if zsh_plugin_path zsh-history-substring-search; then
+  source $REPLY
+  # bind UP and DOWN arrow keys to history substring search
+  bindkey "$terminfo[kcuu1]" history-substring-search-up
+  bindkey "$terminfo[kcud1]" history-substring-search-down
+  bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
+fi
 
 
 ## Terminal title: user@host:cwd when idle, the running command otherwise
