@@ -8,13 +8,13 @@ eval "$(pyenv init -)"
 
 # pdf alias
 function pdf() {
-    for FILE in $@; do
+    for FILE in "$@"; do
         if [[ $FILE == *"." ]] then
             FILE="${FILE}pdf"
         elif [[ ! $FILE == *".pdf" ]] then
             FILE="${FILE}.pdf"
         fi
-        okular $FILE > /tmp/pdf_out 2>&1 &
+        okular "$FILE" > /tmp/pdf_out 2>&1 &
     done
 }
 
