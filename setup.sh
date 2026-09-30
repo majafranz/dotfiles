@@ -24,8 +24,7 @@ done
 
 # zsh stuff
 echo Linking zsh stuff...
-ln -sv$f $SCRIPT_DIR/zsh/zshrc ~/.zshrc
-ln -sv$f $SCRIPT_DIR/zsh/* ~/.zsh
+ln -sv$f $SCRIPT_DIR/zsh ~/.zsh
 
 # nvim stuff
 echo Linking nvim stuff...
