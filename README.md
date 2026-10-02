@@ -10,7 +10,7 @@ Some parts are shamelessly stolen from [mintelm/dotfiles](https://github.com/min
 ./setup.sh      # headless (servers): zsh, nvim, tmux
 ./setup.sh -g   # full: additionally i3, i3status-rust, dunst and GUI extras
                 # (xdg-open/okular aliases, tmux copy to X clipboard)
-./setup.sh -f   # overwrite existing files and create missing dirs (combine with -g)
+./setup.sh -f   # overwrite existing files (combine with -g)
 ```
 
 The GUI extras live in `zsh/zsh_gui` and `tmux/config_gui`; the base configs source them only

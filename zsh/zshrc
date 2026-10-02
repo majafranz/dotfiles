@@ -5,14 +5,17 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Directory of this file in the dotfiles repo (~/.zshrc is a symlink to it)
+ZSH_CONFIG_DIR=${${(%):-%x}:A:h}
+
 # Source manjaro-zsh-configuration
-source ~/.zsh/manjaro-zsh-config
+source $ZSH_CONFIG_DIR/manjaro-zsh-config
 
 # Use manjaro zsh prompt
-source ~/.zsh/manjaro-zsh-prompt
+source $ZSH_CONFIG_DIR/manjaro-zsh-prompt
 
 # Custom options
-source ~/.zsh/zsh_custom
+source $ZSH_CONFIG_DIR/zsh_custom
 
 # Desktop-only options (only linked by `setup.sh -g`)
 [[ ! -r ~/.zsh_gui ]] || source ~/.zsh_gui
