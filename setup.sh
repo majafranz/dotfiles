@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage() {
-	printf "Usage: $0 [-g] [-f]\n\nOptions:\n    -g: full setup with GUI configs (i3, dunst, clipboard, ...); default is headless\n    -f: force link; also creates dirs\n";
+	printf "Usage: $0 [-g] [-f]\n\nOptions:\n    -g: full setup with GUI configs (i3, dunst, clipboard, ...); default is headless\n    -f: force link (overwrite existing files)\n";
 	exit 1;
 }
 
@@ -24,12 +24,6 @@ while getopts "gf" opt; do
 	esac
 done
 
-if [ -n "$f" ]; then
-	echo Creating required directories...
-	mkdir -p ~/.config/nvim
-	[ -n "$gui" ] && mkdir -p ~/.i3
-fi
-
 if [ -n "$gui" ]; then
 	echo "Setting up full (GUI) configs..."
 else
@@ -47,14 +41,18 @@ link_gui() {
 
 # zsh stuff
 echo Linking zsh stuff...
-# -n: replace an existing ~/.zsh link instead of creating a link inside it
-ln -snv$f "$SCRIPT_DIR/zsh" ~/.zsh
+# zshrc finds its files via its own symlink; remove the ~/.zsh link older versions created
+# (or ~/.zsh/zsh, if ~/.zsh was a real directory)
+for l in ~/.zsh ~/.zsh/zsh; do
+	[ -L "$l" ] && [ "$(readlink "$l")" = "$SCRIPT_DIR/zsh" ] && rm -v "$l"
+done
 ln -sv$f "$SCRIPT_DIR/zsh/zshrc" ~/.zshrc
 link_gui "$SCRIPT_DIR/zsh/zsh_gui" ~/.zsh_gui
 
 # nvim stuff
 echo Linking nvim stuff...
-ln -sv$f "$SCRIPT_DIR"/nvim/* ~/.config/nvim
+mkdir -p ~/.config/nvim
+ln -sv$f "$SCRIPT_DIR"/nvim/{init.lua,lazy-lock.json,lsp,lua} ~/.config/nvim
 
 # tmux stuff
 echo Linking tmux stuff...
@@ -65,6 +63,7 @@ link_gui "$SCRIPT_DIR/tmux/config_gui" ~/.tmux.gui.conf
 
 # i3 stuff
 echo Linking i3 stuff...
+mkdir -p ~/.i3
 ln -sv$f "$SCRIPT_DIR"/i3/config ~/.i3/config
 mkdir -p ~/.config/i3status-rust
 ln -sv$f "$SCRIPT_DIR"/i3/statusbar.toml ~/.config/i3status-rust/config.toml
