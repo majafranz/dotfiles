@@ -4,6 +4,15 @@
 
 Some parts are shamelessly stolen from [mintelm/dotfiles](https://github.com/mintelm/dotfiles) :)
 
+### Nixvim
+
+`nixvim/` contains the same config as a [nixvim](https://github.com/nix-community/nixvim) flake,
+used on the NixOS machines (`mkNixVim.<system> host.properties`). Try it with:
+
+```sh
+nix run ./nixvim
+```
+
 ## Setup
 
 ```sh
