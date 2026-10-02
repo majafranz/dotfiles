@@ -2,7 +2,6 @@ local function config()
     local to_be_intalled = {
         "stylua",
         "ruff",
-        "black",
     }
 
     require("null-ls").setup({
@@ -13,11 +12,7 @@ local function config()
     local none_ls = require("null-ls")
 
     none_ls.setup({
-        sources = {
-            none_ls.builtins.formatting.black.with({
-                extra_args = { "--line-length=88" },
-            }),
-        }
+        sources = {}
     })
 end
 
