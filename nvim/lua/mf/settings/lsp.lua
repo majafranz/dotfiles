@@ -1,6 +1,6 @@
 local style = require('mf.style')
 
-local lsp_list = { 'lua_ls', 'clangd', 'pyright', 'bashls' }
+local lsp_list = { 'lua_ls', 'clangd', 'pyright', 'bashls', 'ruff' }
 
 vim.lsp.config('*', {
     capabilities = {
